@@ -1,0 +1,16 @@
+FROM python:3.7
+
+WORKDIR /streamlitbtlaapp
+COPY requirements.txt ./requirements.txt
+COPY hashed_pw.pkl ./hashed_pw.pkl
+COPY BTLA_Logo.png ./BTLA_Logo.png
+
+EXPOSE 8501
+
+RUN pip3 install -r requirements.txt
+
+COPY . /streamlitbtlaapp
+
+ENTRYPOINT ["streamlit", "run"]
+
+CMD ["App.py"]
